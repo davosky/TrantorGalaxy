@@ -1,0 +1,74 @@
+<nav class="navbar navbar-expand-lg bg-light" data-bs-theme="light">
+  <div class="container-fluid">
+    <%= link_to "#", class: "navbar-brand" do %>
+      <%= image_tag("navbar/navbar-logo.svg", class: "img-fluid", alt:"navbar-logo") %>
+    <% end %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor03">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <%= link_to root_path, class: "nav-link" do %>
+            <i class="fa-solid fa-house"></i>
+            &nbsp;
+            Home
+          <% end %>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown nav-link-main-navbar" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            <i class="fa-solid fa-desktop"></i>
+            &nbsp;
+            Rimborsi
+          </a>
+          <div class="dropdown-menu shadow">
+            <%= link_to "#", method: :get, class: "dropdown-item" do %>
+              <i class="fa-solid fa-list"></i>
+              &nbsp;
+              Elenco Rimborsi
+            <% end %>
+            <%= link_to "#", method: :get, class: "dropdown-item" do %>
+              <i class="fa-solid fa-plus"></i>
+              &nbsp;
+              Nuovo Rimborso
+            <% end %>
+          </div>
+        </li>
+      </ul>
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <%= link_to edit_user_registration_path, class: "nav-link" do %>
+            <%=image_tag("#{gender_avatar(current_user)}", size: "24x24") %>
+            &nbsp;
+            <%= full_user %>
+            &emsp;
+          <% end %>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown nav-link-main-navbar" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            <i class="fa-solid fa-bars"></i>
+          </a>
+          <div class="dropdown-menu">
+            <% if admin %>
+              <%= link_to rails_admin_path, class: "dropdown-item" do %>
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+                &nbsp;
+                Amministrazione
+              <% end %>
+            <% end %>
+            <%= link_to home_credits_path, method: :get, class: "dropdown-item" do %>
+              <i class="fa-solid fa-user-gear"></i>
+              &nbsp;
+              Crediti
+            <% end %>
+            <%= link_to destroy_user_session_path, method: :get, class: "dropdown-item" do %>
+              <i class="fa-solid fa-door-open"></i>
+              &nbsp;
+              Esci
+            <% end %>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
