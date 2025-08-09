@@ -1,24 +1,17 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Trantor Galaxy
+## Ruby On Rails web app.
+## reimbursement and absences managment
 
-Things you may want to cover:
+* Ruby version 3.3.9
 
-* Ruby version
+* Rails version  7.2.2.1
 
-* System dependencies
+* Database agnostic
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
+* Operating System compatibility Linux Mac Windows (Linux recomended)
 
 * Deployment instructions
+    * refer to Ruby On Rails official site
 
-* ...
