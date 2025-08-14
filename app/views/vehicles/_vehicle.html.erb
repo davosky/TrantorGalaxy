@@ -1,0 +1,27 @@
+<tr id="<%= dom_id vehicle %>">
+  <td class="d-grid">
+    <%= link_to vehicle, class: "btn btn-sm btn-info shadow", data: { turbo: true, turbo_frame: 'modal' }, title: "Visualizza il Record Corrente" do %>
+      <span class="fs-5 fw-bold">
+        <%= vehicle.name %>
+      </span>
+    <% end %>
+  </td>
+  <td class="fs-5 fw-bold text-dark"><%= vehicle.producer %></td>
+  <td class="fs-5 fw-bold text-dark"><%= vehicle.licence_plate %></td>
+  <td class="fs-5 fw-bold text-dark"><%= number_to_currency(vehicle.cost_per_km) %></td>
+  <td class="fs-5 fw-bold text-dark"><%= vehicle.position %></td>
+  <td>
+    <%= link_to edit_vehicle_path(vehicle), class: "btn btn-sm btn-warning shadow", data: { turbo: true, turbo_frame: 'modal' }, title: "Modifica il Record Corrente" do %>
+      <i class="fa-solid fa-pencil"></i>
+    <% end %>
+  </td>
+  <td>
+    <%= link_to vehicle_path(vehicle),
+            "data-turbo-method": :delete,
+            "data-turbo-confirm": "Sicuri di voler eliminare il record corrente?" , 
+            "data-bs-toggle": "tooltip", 
+            "title": "Elimina il Record Corrente", class: " btn btn-sm btn-danger shadow" do %>
+      <i class="fa-solid fa-trash"></i>
+    <% end %>
+  </td>
+</tr>

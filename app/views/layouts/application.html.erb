@@ -15,12 +15,36 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
   <body>
+    <%= turbo_frame_tag "modal", target: "_top" %>
     <div class="container">
       <% unless user_signed_in? %>
         <%= render "shared/unlogged" %>
       <% else %>
         <%= render "shared/logged" %>
       <% end %>
+    </div>
+    <!-- toast -->
+    <div aria-live="polite" aria-atomic="true" class="position-relative">
+      <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 1080;">
+        <% flash.each do |type, message| %>
+          <%# Map Rails flash types to Bootstrap colors & icons %>
+          <% icon, bootstrap_class = case type.to_sym
+          when :notice then ["bi-check-circle-fill", "bg-success text-white"]
+          when :alert  then ["bi-exclamation-triangle-fill", "bg-danger text-white"]
+          when :info   then ["bi-info-circle-fill", "bg-info text-white"]
+          else ["bi-bell-fill", "bg-primary text-white"]
+        end %>
+          <div class="toast <%= bootstrap_class %> animate-toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+              <div class="toast-body d-flex align-items-center">
+                <i class="<%= icon %> me-2"></i>
+                <%= message %>
+              </div>
+              <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
   </body>
 </html>

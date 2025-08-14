@@ -27,17 +27,20 @@ $red: #ff4136 !default;
 $orange: #fd7e14 !default;
 $yellow: #ff851b !default;
 $green: #28b62c !default;
-$teal: #20c997 !default;
+//$teal: #20c997 !default;
+$teal: #20c9c3 !default;
 $cyan: #75caeb !default;
 
 $primary: $blue !default;
 $secondary: $gray-200 !default;
 $success: $green !default;
-$info: $cyan !default;
+$info: $teal !default;
 $warning: $yellow !default;
 $danger: $red !default;
 $light: $gray-100 !default;
 $dark: $gray-700 !default;
+$medium: $gray-400 !default;
+$darkish: $gray-600;
 
 $min-contrast-ratio: 1.75 !default;
 

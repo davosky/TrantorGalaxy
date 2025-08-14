@@ -1,0 +1,80 @@
+<div class="card">
+  <div class="card-body">
+    <%= form_with(model: vehicle) do |form| %>
+      <div class="row">
+        <div class="row">
+          <div class="col">
+            <span class="float-start fs-3 fw-bold text-primary">
+              <%= image_tag(page, class: "img-fluid") %>
+              &emsp;
+              <%= page_title %>
+            </span>
+            <span class="float-end">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </span>
+          </div>
+          <hr class="text-dark m-2"/>
+        </div>
+        <% if vehicle.errors.any? %>
+          <div class="col bg-danger text-white rounded mb-3">
+            <h2><%= pluralize(vehicle.errors.count, "errori") %>&emsp;hanno impedito in salvataggio:</h2>
+            <ul>
+              <% vehicle.errors.each do |error| %>
+                <li class="fs-5 fw-bold"><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <div class="input-group mb-1">
+            <span class="input-group-text input-group-text-fixed bg-primary text-white">
+              <i class="fa-solid fa-car"></i>
+              &nbsp;&nbsp;
+              <%= form.label :name %>
+            </span>
+            <%= form.text_field :name, class: 'form-control' %>
+          </div>
+          <div class="input-group mb-1">
+            <span class="input-group-text input-group-text-fixed bg-primary text-white">
+              <i class="fa-solid fa-industry"></i>
+              &nbsp;&nbsp;
+              <%= form.label :producer %>
+            </span>
+            <%= form.text_field :producer, class: 'form-control' %>
+          </div>
+          <div class="input-group mb-1">
+            <span class="input-group-text input-group-text-fixed bg-primary text-white">
+              <i class="fa-solid fa-credit-card"></i>
+              &nbsp;&nbsp;
+              <%= form.label :licence_plate %>
+            </span>
+            <%= form.text_field :licence_plate, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="input-group mb-1">
+            <span class="input-group-text input-group-text-fixed bg-primary text-white">
+              <i class="fa-solid fa-money-bill"></i>
+              &nbsp;&nbsp;
+              <%= form.label :cost_per_km %>
+            </span>
+            <%= form.number_field :cost_per_km, step: 0.01, class: 'form-control' %>
+          </div>
+          <div class="input-group mb-2">
+            <span class="input-group-text input-group-text-fixed bg-primary text-white">
+              <i class="fa-solid fa-arrow-up-9-1"></i>
+              &nbsp;&nbsp;
+              <%= form.label :position %>
+            </span>
+            <%= form.number_field :position, class: 'form-control' %>
+          </div>
+          <div class="d-grid">
+            <%= form.submit class: 'btn btn-success shadow' %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

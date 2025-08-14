@@ -2,7 +2,7 @@
 
 # Trantor Galaxy
 ## Ruby On Rails web app.
-## reimbursement and absences managment
+## reimbursements and absences managment
 
 * Ruby version 3.3.9
 
@@ -13,5 +13,6 @@
 * Operating System compatibility Linux Mac Windows (Linux recomended)
 
 * Deployment instructions
+    
     * refer to Ruby On Rails official site
 

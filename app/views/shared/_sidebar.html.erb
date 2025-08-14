@@ -1,0 +1,37 @@
+<div class="col-2">
+  <nav class="sidebar d-flex flex-column p-3 rounded bg-light">
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown" href="#" id="productsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fa-solid fa-gears"></i>
+          &nbsp;
+          Servizio
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="productsDropdown">
+          <%= link_to vehicles_path, class: "dropdown-item" do %>
+            <i class="fa-solid fa-car"></i>
+            Veicoli
+          <% end %>
+        </ul>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown" href="#" id="productsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fa-regular fa-file-lines"></i>
+          &nbsp;
+          Rimborsi
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="productsDropdown">
+          <%= link_to "#", class: "dropdown-item" do %>
+            <i class="fa-solid fa-list-ul"></i>
+            <i class="fa-regular fa-file-lines"></i>
+            &nbsp;
+            Elenco Rimborsi
+          <% end %>
+        </ul>
+      </li>
+      <li>
+        <a href="#" class="nav-link">Link</a>
+      </li>
+    </ul>
+  </nav>
+</div>

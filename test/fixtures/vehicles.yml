@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  producer: MyString
+  licence_plate: MyString
+  cost_per_km: 9.99
+  position: 1
+  user: one
+
+two:
+  name: MyString
+  producer: MyString
+  licence_plate: MyString
+  cost_per_km: 9.99
+  position: 1
+  user: two

@@ -1,0 +1,15 @@
+<%
+  closable ||= false
+  fade_in ||= false
+%>
+<%= turbo_frame_tag "modal" do %>
+  <div class="modal <%= fade_in ? "fade" : ""%>" tabindex="-1" data-controller="modal" id="<%= closable ? "closable" : ""%>">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-body bg-light rounded" id="remote_modal_body" >
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
