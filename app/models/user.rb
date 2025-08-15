@@ -8,4 +8,5 @@ class User < ApplicationRecord
   has_many :roads
   has_many :places
   has_many :structures
+  has_many :reasons
 end

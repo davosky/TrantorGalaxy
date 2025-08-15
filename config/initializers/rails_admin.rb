@@ -45,6 +45,12 @@ RailsAdmin.config do |config|
     label_plural "Strutture"
   end
 
+  config.model "Reason" do
+    visible true
+    label "Motivo Missione"
+    label_plural "Motivi Missione"
+  end
+
   config.actions do
     dashboard
     index

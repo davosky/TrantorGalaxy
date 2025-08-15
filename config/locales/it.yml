@@ -14,6 +14,7 @@ it:
       road: Percorso
       place: Luogo
       structure: Struttura
+      reason: Motivo Missione
     simple_calendar:
       previous: "<<"
       next: ">>"
@@ -83,6 +84,13 @@ it:
         user_id: Utente
       structure:
         name: Struttura
+        position: Posizione
+        created_at: Creato il
+        updated_at: Aggiornato il
+        user: Utente
+        user_id: Utente
+      reason:
+        name: Motivo Missione
         position: Posizione
         created_at: Creato il
         updated_at: Aggiornato il
