@@ -6,23 +6,23 @@
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="input-group input-group-text-fixed mb-2">
         <span class="input-group-text input-group-text-fixed bg-primary text-white">
-          <i class="fa-solid fa-user"></i>
+          <i class="fa-solid fa-user fs-5 fw-bold"></i>
           &nbsp;
-          <%= f.label :username %>
+          <%= f.label :username, class: "fs-5 fw-bold" %>
         </span>
-        <%= f.text_field :username, class: 'form-control' %>
+        <%= f.text_field :username, class: 'form-control fs-5 fw-bold' %>
       </div>
       <div class="input-group input-group-text-fixed mb-3">
         <span class="input-group-text input-group-text-fixed bg-primary text-white">
-          <i class="fa-solid fa-key"></i>
+          <i class="fa-solid fa-key fs-5 fw-bold"></i>
           &nbsp;
-          <%= f.label :password %>
+          <%= f.label :password, class: "fs-5 fw-bold" %>
         </span>
-        <%= f.password_field :password, class: 'form-control' %>
+        <%= f.password_field :password, class: 'form-control fs-5 fw-bold' %>
       </div>
       <div class="d-grid mb-5">
-        <%= button_tag(type: "submit", class: "btn btn-primary") do %>
-          <i class="fas fa-sign-in-alt"></i>&ensp;ACCEDI
+        <%= button_tag(type: "submit", class: "btn btn-primary fs-5 fw-bold") do %>
+          <i class="fas fa-sign-in-alt fs-5 fw-bold"></i>&ensp;ACCEDI
         <% end %>
       </div>
     <% end %>
