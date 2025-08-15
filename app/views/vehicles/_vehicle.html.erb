@@ -16,11 +16,7 @@
     <% end %>
   </td>
   <td>
-    <%= link_to vehicle_path(vehicle),
-            "data-turbo-method": :delete,
-            "data-turbo-confirm": "Sicuri di voler eliminare il record corrente?" , 
-            "data-bs-toggle": "tooltip", 
-            "title": "Elimina il Record Corrente", class: " btn btn-sm btn-danger shadow" do %>
+    <%= link_to vehicle, class: "btn btn-sm btn-danger shadow", method: :delete, data: { "turbo-method": :delete, turbo_confirm: "Sicuri di voler eliminare il record corrente?" } do %>
       <i class="fa-solid fa-trash"></i>
     <% end %>
   </td>

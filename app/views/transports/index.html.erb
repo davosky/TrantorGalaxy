@@ -1,0 +1,46 @@
+<div class="card">
+  <div class="card-header bg-light">
+    <span class="float-start fs-3 fw-bold text-primary">
+      <%= image_tag("transport/transports-logo.svg", class: "img-fluid", alt: "transports-logo.svg") %>
+      &emsp;
+      Trasporti
+    </span>
+    <span class="float-end fs-4 fw-bold">
+      <%= link_to new_transport_path, class: "btn btn-sm btn-success shadow  fs-5 fw-bold", data: { turbo: true, turbo_frame: 'modal' }, title: "Crea un Nuovo Record" do %>
+        <span class="fs-6 fw-bold">
+          <i class="fa-solid fa-plus"></i>
+          &nbsp;
+          <i class="fa-solid fa-train"></i>
+          &nbsp;
+          Nuovo Trasporto
+        </span>
+      <% end %>
+    </span>
+  </div>
+  <div class="card-body">
+    <%# notice %>
+    <div id="transports">
+      <table class="table table-hover">
+        <thead>
+          <th class="fs-5 fw-bold text-primary">
+            <i class="fa-solid fa-train fs-5 fw-bold text-primary"></i>
+            &nbsp;
+            Trasporto
+          </th>
+          <th class="fs-5 fw-bold text-primary">
+            <i class="fa-solid fa-arrow-up-9-1 fs-5 fw-bold text-primary"></i>
+            &nbsp;
+            Posizione
+          </th>
+          <th colspan=2></th>
+        </th>
+      </thead>
+      <tbody>
+        <% @transports.each do |transport| %>
+          <%= render transport %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>

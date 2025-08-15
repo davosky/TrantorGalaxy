@@ -5,9 +5,9 @@
         <div class="row">
           <div class="col">
             <span class="float-start fs-3 fw-bold text-primary">
-              <%= image_tag(page, class: "img-fluid") %>
+              <%= image_tag(page_vehicle, class: "img-fluid") %>
               &emsp;
-              <%= page_title %>
+              <%= page_title_vehicle %>
             </span>
             <span class="float-end">
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -30,48 +30,48 @@
         <div class="col-6">
           <div class="input-group mb-1">
             <span class="input-group-text input-group-text-fixed bg-primary text-white">
-              <i class="fa-solid fa-car"></i>
-              &nbsp;&nbsp;
-              <%= form.label :name %>
+              <i class="fa-solid fa-car fs-5 fw-bold"></i>
+              &nbsp;
+              <%= form.label :name, class: "fs-5 fw-bold" %>
             </span>
-            <%= form.text_field :name, class: 'form-control' %>
+            <%= form.text_field :name, class: 'form-control  fs-5 fw-bold' %>
           </div>
           <div class="input-group mb-1">
             <span class="input-group-text input-group-text-fixed bg-primary text-white">
-              <i class="fa-solid fa-industry"></i>
-              &nbsp;&nbsp;
-              <%= form.label :producer %>
+              <i class="fa-solid fa-industry fs-5 fw-bold"></i>
+              &nbsp;
+              <%= form.label :producer, class: "fs-5 fw-bold" %>
             </span>
-            <%= form.text_field :producer, class: 'form-control' %>
+            <%= form.text_field :producer, class: 'form-control fs-5 fw-bold' %>
           </div>
           <div class="input-group mb-1">
             <span class="input-group-text input-group-text-fixed bg-primary text-white">
-              <i class="fa-solid fa-credit-card"></i>
+              <i class="fa-solid fa-credit-card fs-5 fw-bold"></i>
               &nbsp;&nbsp;
-              <%= form.label :licence_plate %>
+              <%= form.label :licence_plate, class: "fs-5 fw-bold" %>
             </span>
-            <%= form.text_field :licence_plate, class: 'form-control' %>
+            <%= form.text_field :licence_plate, class: 'form-control fs-5 fw-bold' %>
           </div>
         </div>
         <div class="col-6">
           <div class="input-group mb-1">
             <span class="input-group-text input-group-text-fixed bg-primary text-white">
-              <i class="fa-solid fa-money-bill"></i>
+              <i class="fa-solid fa-money-bill fs-5 fw-bold"></i>
               &nbsp;&nbsp;
-              <%= form.label :cost_per_km %>
+              <%= form.label :cost_per_km, class: "fs-5 fw-bold" %>
             </span>
-            <%= form.number_field :cost_per_km, step: 0.01, class: 'form-control' %>
+            <%= form.number_field :cost_per_km, step: 0.01, class: 'form-control fs-5 fw-bold' %>
           </div>
           <div class="input-group mb-2">
             <span class="input-group-text input-group-text-fixed bg-primary text-white">
-              <i class="fa-solid fa-arrow-up-9-1"></i>
+              <i class="fa-solid fa-arrow-up-9-1 fs-5 fw-bold"></i>
               &nbsp;&nbsp;
-              <%= form.label :position %>
+              <%= form.label :position, class: "fs-5 fw-bold" %>
             </span>
-            <%= form.number_field :position, class: 'form-control' %>
+            <%= form.number_field :position, class: 'form-control fs-5 fw-bold' %>
           </div>
           <div class="d-grid">
-            <%= form.submit class: 'btn btn-success shadow' %>
+            <%= form.submit class: 'btn btn-success shadow fs-5 fw-bold' %>
           </div>
         </div>
       </div>

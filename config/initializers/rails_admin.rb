@@ -21,6 +21,12 @@ RailsAdmin.config do |config|
     label_plural "Veicoli"
   end
 
+  config.model "Transport" do
+    visible true
+    label "Trasporto"
+    label_plural "Trasporti"
+  end
+
   config.actions do
     dashboard
     index

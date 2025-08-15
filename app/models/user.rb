@@ -4,4 +4,5 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :recoverable
 
   has_many :vehicles
+  has_many :transports
 end

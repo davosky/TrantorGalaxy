@@ -1,5 +1,5 @@
 module VehiclesHelper
-  def page
+  def page_vehicle
     if current_page?(action: "new")
       "vehicle/new-vehicle-logo.svg"
     elsif current_page?(action: "edit")
@@ -9,7 +9,7 @@ module VehiclesHelper
     end
   end
 
-  def page_title
+  def page_title_vehicle
     if current_page?(action: "new")
       "Crea un Nuovo Veicolo"
     elsif current_page?(action: "edit")

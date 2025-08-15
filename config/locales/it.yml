@@ -10,6 +10,7 @@ it:
     models:
       user: Utente
       vehicle: Veicolo
+      transport: Trasporto
     simple_calendar:
       previous: "<<"
       next: ">>"
@@ -49,6 +50,13 @@ it:
         producer: Produttore
         licence_plate: Targa
         cost_per_km: Costo al Chilometro
+        position: Posizione
+        created_at: Creato il
+        updated_at: Aggiornato il
+        user: Utente
+        user_id: Utente
+      transport:
+        name: Trasporto
         position: Posizione
         created_at: Creato il
         updated_at: Aggiornato il
