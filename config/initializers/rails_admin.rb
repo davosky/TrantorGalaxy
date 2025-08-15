@@ -33,6 +33,12 @@ RailsAdmin.config do |config|
     label_plural "Percorsi"
   end
 
+  config.model "Place" do
+    visible true
+    label "Luogo"
+    label_plural "Luoghi"
+  end
+
   config.actions do
     dashboard
     index

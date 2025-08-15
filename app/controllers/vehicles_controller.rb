@@ -2,7 +2,6 @@ class VehiclesController < ApplicationController
   before_action :set_vehicle, only: %i[ show edit update destroy ]
 
   def index
-    @vehicles = Vehicle.all
     @vehicles = Vehicle.where(user_id: current_user.id).order(position: "ASC")
   end
 

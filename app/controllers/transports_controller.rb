@@ -2,7 +2,6 @@ class TransportsController < ApplicationController
   before_action :set_transport, only: %i[ show edit update destroy ]
 
   def index
-    @transports = Transport.all
     @transports = Transport.where(user_id: current_user.id).order(position: "ASC")
   end
 

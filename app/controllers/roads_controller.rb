@@ -2,7 +2,6 @@ class RoadsController < ApplicationController
   before_action :set_road, only: %i[ show edit update destroy ]
 
   def index
-    @roads = Road.all
     @roads = Road.where(user_id: current_user.id).order(position: "ASC")
   end
 
