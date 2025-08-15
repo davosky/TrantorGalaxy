@@ -39,6 +39,12 @@ RailsAdmin.config do |config|
     label_plural "Luoghi"
   end
 
+  config.model "Structure" do
+    visible true
+    label "Struttura"
+    label_plural "Strutture"
+  end
+
   config.actions do
     dashboard
     index

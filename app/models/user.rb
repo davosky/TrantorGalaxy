@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_many :transports
   has_many :roads
   has_many :places
+  has_many :structures
 end

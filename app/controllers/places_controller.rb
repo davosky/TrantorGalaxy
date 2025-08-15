@@ -26,25 +26,17 @@ class PlacesController < ApplicationController
   end
 
   def update
-    if @place.name == "Veicolo Aziendale" || @place.name == "Veicolo Privato"
-      redirect_to places_url, notice: "Record di sistema non modificabile"
+    if @place.update(place_params)
+      redirect_to places_url, notice: "Il Luogo è stato modificato con successo."
     else
-      if @place.update(place_params)
-        redirect_to places_url, notice: "Il Luogo è stato modificato con successo."
-      else
-        render :form_update, status: :unprocessable_entity
-      end
+      render :form_update, status: :unprocessable_entity
     end
   end
 
   def destroy
-    if @place.name == "Veicolo Aziendale" || @place.name == "Veicolo Privato"
-      redirect_to places_url, notice: "Record di sistema non cancellabile"
-    else
-      @place.destroy!
+    @place.destroy!
 
-      redirect_to places_url, notice: "Il Luogo è stato eliminato con successo."
-    end
+    redirect_to places_url, notice: "Il Luogo è stato eliminato con successo."
   end
 
   private

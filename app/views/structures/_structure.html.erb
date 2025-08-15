@@ -1,0 +1,20 @@
+<tr id="<%= dom_id structure %>">
+  <td class="d-grid">
+    <%= link_to structure, class: "btn btn-sm btn-info shadow", data: { turbo: true, turbo_frame: 'modal' }, title: "Visualizza il Record Corrente" do %>
+      <span class="fs-5 fw-bold">
+        <%= structure.name %>
+      </span>
+    <% end %>
+  </td>
+  <td class="fs-5 fw-bold text-dark"><%= structure.position %></td>
+  <td>
+    <%= link_to edit_structure_path(structure), class: "btn btn-sm btn-warning shadow", data: { turbo: true, turbo_frame: 'modal' }, title: "Modifica il Record Corrente" do %>
+      <i class="fa-solid fa-pencil"></i>
+    <% end %>
+  </td>
+  <td>
+    <%= link_to structure, class: "btn btn-sm btn-danger shadow", method: :delete, data: { "turbo-method": :delete, turbo_confirm: "Sicuri di voler eliminare il record corrente?" } do %>
+      <i class="fa-solid fa-trash"></i>
+    <% end %>
+  </td>
+</tr>

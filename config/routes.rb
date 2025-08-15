@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :transports
   resources :roads
   resources :places
+  resources :structures
 
   devise_for :users, skip: [:registrations]
   as :user do
