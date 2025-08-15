@@ -1,0 +1,44 @@
+<div class="card">
+  <div class="card-header bg-light">
+    <span class="float-start fs-3 fw-bold text-primary">
+      <%= image_tag(page_road, class: "img-fluid") %>
+      &emsp;
+      <%= page_title_road %>
+    </span>
+    <span class="float-end">
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </span>
+  </div>
+  <div class="card-body bg-light">
+    <div class="row">
+      <div class="col-8 offset-2">
+        <ul class="list-group">
+          <li class="list-group-item d-flex justify-content-between align-items-center fs-5">
+            Percorso:
+            <span class="badge bg-info pill fs-5 fw-bold shadow">
+              <%= @road.name %>
+            </span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center fs-5">
+            Lunghezza:
+            <span class="badge bg-info pill fs-5 fw-bold shadow">
+              <%= @road.road_lenght %>
+            </span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center fs-5">
+            Costo Autostrada:
+            <span class="badge bg-info pill fs-5 fw-bold shadow">
+              <%= number_to_currency(@road.highway_cost) %>
+            </span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center fs-5">
+            Posizione:
+            <span class="badge bg-info pill fs-5 fw-bold shadow">
+              <%= @road.position %>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

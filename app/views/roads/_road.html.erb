@@ -1,0 +1,22 @@
+<tr id="<%= dom_id road %>">
+  <td class="d-grid">
+    <%= link_to road, class: "btn btn-sm btn-info shadow", data: { turbo: true, turbo_frame: 'modal' }, title: "Visualizza il Record Corrente" do %>
+      <span class="fs-5 fw-bold">
+        <%= road.name %>
+      </span>
+    <% end %>
+  </td>
+  <td class="fs-5 fw-bold text-dark"><%= road.road_lenght %>&nbsp;Km</td>
+  <td class="fs-5 fw-bold text-dark"><%= number_to_currency(road.highway_cost) %></td>
+  <td class="fs-5 fw-bold text-dark"><%= road.position %></td>
+  <td>
+    <%= link_to edit_road_path(road), class: "btn btn-sm btn-warning shadow", data: { turbo: true, turbo_frame: 'modal' }, title: "Modifica il Record Corrente" do %>
+      <i class="fa-solid fa-pencil"></i>
+    <% end %>
+  </td>
+  <td>
+    <%= link_to road, class: "btn btn-sm btn-danger shadow", method: :delete, data: { "turbo-method": :delete, turbo_confirm: "Sicuri di voler eliminare il record corrente?" } do %>
+      <i class="fa-solid fa-trash"></i>
+    <% end %>
+  </td>
+</tr>

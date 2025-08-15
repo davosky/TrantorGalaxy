@@ -11,6 +11,7 @@ it:
       user: Utente
       vehicle: Veicolo
       transport: Trasporto
+      road: Percorso
     simple_calendar:
       previous: "<<"
       next: ">>"
@@ -57,6 +58,15 @@ it:
         user_id: Utente
       transport:
         name: Trasporto
+        position: Posizione
+        created_at: Creato il
+        updated_at: Aggiornato il
+        user: Utente
+        user_id: Utente
+      road:
+        name: Percorso
+        road_lenght: Lunghezza Percorso
+        highway_cost: Costo Autostrada
         position: Posizione
         created_at: Creato il
         updated_at: Aggiornato il

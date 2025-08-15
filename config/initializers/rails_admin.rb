@@ -27,6 +27,12 @@ RailsAdmin.config do |config|
     label_plural "Trasporti"
   end
 
+  config.model "Road" do
+    visible true
+    label "Percorso"
+    label_plural "Percorsi"
+  end
+
   config.actions do
     dashboard
     index

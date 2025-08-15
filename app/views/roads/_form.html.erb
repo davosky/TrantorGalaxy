@@ -1,0 +1,70 @@
+<div class="card">
+  <div class="card-body">
+    <%= form_with(model: road) do |form| %>
+      <div class="row">
+        <div class="row">
+          <div class="col">
+            <span class="float-start fs-3 fw-bold text-primary">
+              <%= image_tag(page_road, class: "img-fluid") %>
+              &emsp;
+              <%= page_title_road %>
+            </span>
+            <span class="float-end">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </span>
+          </div>
+          <hr class="text-dark m-2"/>
+        </div>
+        <% if road.errors.any? %>
+          <div class="col bg-danger text-white rounded mb-3">
+            <h2><%= pluralize(road.errors.count, "errori") %>&emsp;hanno impedito in salvataggio:</h2>
+            <ul>
+              <% road.errors.each do |error| %>
+                <li class="fs-5 fw-bold"><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+      </div>
+      <div class="row">
+        <div class="col-8 offset-2">
+          <div class="input-group mb-1">
+            <span class="input-group-text input-group-text-fixed bg-primary text-white">
+              <i class="fa-solid fa-road fs-5 fw-bold"></i>
+              &nbsp
+              <%= form.label :name, class: "fs-5 fw-bold" %>
+            </span>
+            <%= form.text_field :name, class: 'form-control fs-5 fw-bold' %>
+          </div>
+          <div class="input-group mb-1">
+            <span class="input-group-text input-group-text-fixed bg-primary text-white">
+              <i class="fa-solid fa-ruler-horizontal fs-5 fw-bold"></i>
+              &nbsp
+              <%= form.label :road_lenght, class: "fs-5 fw-bold" %>
+            </span>
+            <%= form.number_field :road_lenght, step: 0.01, class: 'form-control fs-5 fw-bold' %>
+          </div>
+          <div class="input-group mb-1">
+            <span class="input-group-text input-group-text-fixed bg-primary text-white">
+              <i class="fa-solid fa-ticket fs-5 fw-bold"></i>
+              &nbsp
+              <%= form.label :highway_cost, class: "fs-5 fw-bold" %>
+            </span>
+            <%= form.number_field :highway_cost, step: 0.01, class: 'form-control fs-5 fw-bold' %>
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text input-group-text-fixed bg-primary text-white">
+              <i class="fa-solid fa-arrow-up-9-1 fs-5 fw-bold"></i>
+              &nbsp
+              <%= form.label :position, class: "fs-5 fw-bold" %>
+            </span>
+            <%= form.number_field :position, class: 'form-control fs-5 fw-bold' %>
+          </div>
+          <div class="d-grid">
+            <%= form.submit class: 'btn btn-success shadow fs-5 fw-bold' %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
