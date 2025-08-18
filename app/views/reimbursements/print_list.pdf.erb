@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset='utf-8'/>
+    <%= stylesheet_link_tag wicked_pdf_asset_base64('print_list.scss') %>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <%= inline_svg('pdf/reimbursements_logo_riepilogo.svg', preserve_aspect_ratio: 'xMaxYMax meet') %>
+          <hr/>
+          <br/>
+          <table align="center">
+            <thead>
+              <tr>
+                <th class="td-institute"><strong>Utente</strong></th>
+                <th class="td-institute"><strong>Istituto</strong></th>
+                <th class="td-date"><strong>Data</strong></th>
+                <th class="td-date"><strong>Luogo</strong></th>
+                <th class="td-date"><strong>Ammontare</strong></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @total = 0 %>
+              <% @reimbursements.each do |reimbursement| %>
+                <tr>
+                  <td class="td-institute"><%= "#{reimbursement.user.first_name} #{reimbursement.user.last_name}".html_safe %></td>
+                  <td class="td-institute"><%= reimbursement.user.institute %></td>
+                  <td class="td-date"><%= l(reimbursement.departure_date) %></td>
+                  <td><%= reimbursement.place_fr %></td>
+                  <td class="td-date"><%= number_to_currency(reimbursement.total_amount) %></td>
+                </tr>
+                <% @total = @total + reimbursement.total_amount %>
+              <% end %>
+            </tbody>
+          </table>
+          <br/>
+          <hr/>
+          <br/>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <span class="span-right">
+            <h3>
+              Totale:
+              &emsp;
+              <strong>
+                <%= number_to_currency(@total) %>
+              </strong>
+              &emsp;
+            </h3>
+          </span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

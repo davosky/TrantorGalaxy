@@ -8,6 +8,10 @@ class Vehicle < ApplicationRecord
     self.id = last_id.to_i + 1
   end
 
+  def fullvehicle
+    "#{self.producer} #{self.name} #{self.licence_plate}".html_safe
+  end
+
   validates :name, :producer, :licence_plate, :cost_per_km, :position, presence: true
   validates :licence_plate, uniqueness: true
 end

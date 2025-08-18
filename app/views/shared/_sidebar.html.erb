@@ -36,16 +36,28 @@
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown" href="#" id="productsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <i class="fa-regular fa-file-lines"></i>
+          <i class="fa-solid fa-receipt"></i>
           &nbsp;
           Rimborsi
         </a>
         <ul class="dropdown-menu" aria-labelledby="productsDropdown">
-          <%= link_to "#", class: "dropdown-item" do %>
+          <%= link_to reimbursements_path, class: "dropdown-item" do %>
             <i class="fa-solid fa-list-ul"></i>
-            <i class="fa-regular fa-file-lines"></i>
+            <i class="fa-solid fa-receipt"></i>
             &nbsp;
             Elenco Rimborsi
+          <% end %>
+          <%= link_to print_reimbursements_path, class: "dropdown-item" do %>
+            <i class="fa-solid fa-print"></i>
+            <i class="fa-solid fa-receipt"></i>
+            &nbsp;
+            Stampa Rimborsi
+          <% end %>
+          <%= link_to print_list_reimbursements_path, class: "dropdown-item" do %>
+            <i class="fa-solid fa-print"></i>
+            <i class="fa-solid fa-receipt"></i>
+            &nbsp;
+            Stampa Riepiloghi
           <% end %>
         </ul>
       </li>

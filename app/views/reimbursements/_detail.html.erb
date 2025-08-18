@@ -1,0 +1,65 @@
+<div id="<%= dom_id @reimbursement %>" class="scaffold_record">
+  <div class="card">
+    <div class="card-header bg-light">
+      <span class="float-start fs-3 fw-bold text-primary">
+        <%= image_tag(page_reimbursement, class: "img-fluid") %>
+        &emsp;
+        <%= page_title_reimbursement %>
+        &emsp;
+        N&#176;:&nbsp;<%= @reimbursement.name %>
+      </span>
+      <span class="float-end">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </span>
+    </div>
+    <div class="card-body bg-light">
+      <div class="row">
+        <div class="col-8 offset-2 fs-5">
+          Ho inoltrato la Richiesta Missione il giorno: <span class="fs-5 fw-bold"><%= l(@reimbursement.request_date) %></span>.
+          <br/>
+          <%= departure_gender(@reimbursement) %> <span class="fs-5 fw-bold"><%= l(@reimbursement.departure_date) %></span> verso <span class="fs-5 fw-bold"><%= @reimbursement.place_fr %></span> per il seguente motivo: 
+          &nbsp;
+          <span class="fs-5 fw-bold"><%= @reimbursement.reason_fr %></span>.
+          <br/>
+          Ho utilizzato i seguenti mezzi di trasporto: <span class="fs-5 fw-bold">
+            <%= @reimbursement.transport_fr %>
+          </span>
+          <br/>
+          <%= used_vehicle(@reimbursement) %>
+          &nbsp;
+          Percorrendo
+          &nbsp;
+          <span class="fs-5 fw-bold"><%= @reimbursement.road_lenght_fr %></span>
+          &nbsp;
+          Km.
+          <hr/>
+          Ho sostenuto le seguenti spese:
+          <table class="table mt-3">
+            <tbody>
+              <%= incurred_prking_cost(@reimbursement) %>
+              <%= incurred_food_cost(@reimbursement) %>
+              <%= incurred_room_cost(@reimbursement) %>
+              <%= incurred_ticket_cost(@reimbursement) %>
+              <%= incurred_generic_cost(@reimbursement) %>
+              <%= incurred_highway_cost(@reimbursement) %>
+              <%= incurred_private_vehicle_cost(@reimbursement) %>
+              <tr>
+                <td class="fs-5 fw-bold">
+                  Totale Generale:
+                </td>
+                <td>
+                  <span class="fs-5 fw-bold text-warning"><%= number_to_currency(@reimbursement.total_amount) %></span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="mt-2 fs-5">
+            <%= return_gender(@reimbursement) %> <span class="fs-5 fw-bold"><%= l(@reimbursement.return_date) %></span>
+            <br/>
+            Ho fatto richiesta di rimborso spese il giorno <span class="fs-5 fw-bold"><%= l(@reimbursement.reimbursement_date) %></span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

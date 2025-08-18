@@ -51,6 +51,12 @@ RailsAdmin.config do |config|
     label_plural "Motivi Missione"
   end
 
+  config.model "Reimbursement" do
+    visible true
+    label "Rimborso Spese"
+    label_plural "Rimborsi Spese"
+  end
+
   config.actions do
     dashboard
     index

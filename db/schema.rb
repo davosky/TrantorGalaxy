@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_08_15_135940) do
+ActiveRecord::Schema[7.2].define(version: 2025_08_18_110645) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -30,6 +30,38 @@ ActiveRecord::Schema[7.2].define(version: 2025_08_15_135940) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_reasons_on_user_id"
+  end
+
+  create_table "reimbursements", force: :cascade do |t|
+    t.integer "name"
+    t.date "departure_date"
+    t.date "return_date"
+    t.date "request_date"
+    t.date "reimbursement_date"
+    t.decimal "parking_cost", precision: 8, scale: 2, default: "0.0"
+    t.decimal "food_cost", precision: 8, scale: 2, default: "0.0"
+    t.decimal "room_cost", precision: 8, scale: 2, default: "0.0"
+    t.decimal "ticket_cost", precision: 8, scale: 2, default: "0.0"
+    t.decimal "generic_cost", precision: 8, scale: 2, default: "0.0"
+    t.decimal "total_amount", precision: 8, scale: 2, default: "0.0"
+    t.integer "user_id"
+    t.integer "reason_id"
+    t.integer "road_id"
+    t.integer "place_id"
+    t.integer "structure_id"
+    t.integer "transport_id"
+    t.integer "vehicle_id"
+    t.string "user_fr"
+    t.string "reason_fr"
+    t.string "road_fr"
+    t.string "place_fr"
+    t.string "structure_fr"
+    t.string "transport_fr"
+    t.string "vehicle_fr"
+    t.decimal "highway_cost_fr", precision: 8, scale: 2, default: "0.0"
+    t.decimal "road_lenght_fr", precision: 8, scale: 2, default: "0.0"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "roads", force: :cascade do |t|
@@ -87,6 +119,10 @@ ActiveRecord::Schema[7.2].define(version: 2025_08_15_135940) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
+    t.string "signature"
+    t.string "validator_signature"
+    t.string "confirmator_signature"
+    t.string "institute_logo"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true

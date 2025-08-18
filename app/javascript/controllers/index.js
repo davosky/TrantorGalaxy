@@ -10,5 +10,8 @@ application.register("hello", HelloController)
 import ModalController from "./modal_controller"
 application.register("modal", ModalController)
 
+import ReimbursementController from "./reimbursement_controller"
+application.register("reimbursement", ReimbursementController)
+
 import ToastsController from "./toasts_controller"
 application.register("toasts", ToastsController)

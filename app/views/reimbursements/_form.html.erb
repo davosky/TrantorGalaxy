@@ -1,0 +1,277 @@
+<div class="card">
+  <div class="card-body">
+    <%= form_with(model: reimbursement) do |form| %>
+      <div class="row">
+        <div class="row">
+          <div class="col">
+            <span class="float-start fs-3 fw-bold text-primary">
+              <%= image_tag(page_reimbursement, class: "img-fluid") %>
+              &emsp;
+              <%= page_title_reimbursement %>
+            </span>
+            <span class="float-end">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </span>
+          </div>
+          <hr class="text-dark m-2"/>
+        </div>
+        <% if reimbursement.errors.any? %>
+          <div class="col bg-danger text-white rounded mb-3">
+            <h2><%= pluralize(reimbursement.errors.count, "errori") %>&emsp;hanno impedito in salvataggio:</h2>
+            <ul>
+              <% reimbursement.errors.each do |error| %>
+                <li class="fs-5 fw-bold"><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <div class="input-group mb-1">
+            <span class="input-group-text input-group-text-fixed bg-primary text-white">
+              <i class="fa-solid fa-calendar-day fs-5 fw-bold"></i>
+              &nbsp
+              <%= form.label :departure_date, class: "fs-5 fw-bold" %>
+            </span>
+            <%= form.date_field :departure_date, class: 'form-control fs-5 fw-bold' %>
+          </div>
+          <div class="input-group mb-1">
+            <span class="input-group-text input-group-text-fixed bg-primary text-white">
+              <i class="fa-solid fa-calendar-day fs-5 fw-bold"></i>
+              &nbsp
+              <%= form.label :return_date, class: "fs-5 fw-bold" %>
+            </span>
+            <%= form.date_field :return_date, class: 'form-control fs-5 fw-bold' %>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="input-group mb-1">
+            <span class="input-group-text input-group-text-fixed bg-primary text-white">
+              <i class="fa-solid fa-calendar-day fs-5 fw-bold"></i>
+              &nbsp
+              <%= form.label :request_date, class: "fs-5 fw-bold" %>
+            </span>
+            <%= form.date_field :request_date, class: 'form-control fs-5 fw-bold' %>
+          </div>
+          <div class="input-group mb-1">
+            <span class="input-group-text input-group-text-fixed bg-primary text-white">
+              <i class="fa-solid fa-calendar-day fs-5 fw-bold"></i>
+              &nbsp
+              <%= form.label :reimbursement_date, class: "fs-5 fw-bold" %>
+            </span>
+            <%= form.date_field :reimbursement_date, class: 'form-control fs-5 fw-bold' %>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <hr class="text-primary"/>
+        <div class="col-6">
+          <div class="input-group mb-1">
+            <span class="input-group-text input-group-text-fixed bg-primary text-white">
+              <i class="fa-solid fa-train fs-5 fw-bold"></i>
+              &nbsp
+              <%= form.label :transport, class: "fs-5 fw-bold" %>
+            </span>
+            <%= form.collection_select(:transport_id, Transport.where(user_id: current_user.id).order(position: "ASC"), :id, :name, {:include_blank => true}, {:class => "form-select fs-5 fw-bold"}) %>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="input-group mb-1">
+            <span class="input-group-text input-group-text-fixed bg-primary text-white">
+              <i class="fa-solid fa-car fs-5 fw-bold"></i>
+              &nbsp
+              <%= form.label :vehicle, class: "fs-5 fw-bold" %>
+            </span>
+            <%= form.collection_select(:vehicle_id, Vehicle.where(user_id: current_user.id).order(position: "ASC"), :id, :fullvehicle, {:include_blank => true}, {:class => "form-select fs-5 fw-bold"}) %>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <hr class="text-primary"/>
+        <div class="col-6">
+          <div class="input-group mb-1">
+            <span class="input-group-text input-group-text-fixed bg-primary text-white">
+              <i class="fa-solid fa-square-parking fs-5 fw-bold"></i>
+              &nbsp
+              <%= form.label :parking_cost, step: 0.01, class: "fs-5 fw-bold" %>
+            </span>
+            <%= form.number_field :parking_cost, step: 0.01, class: 'form-control fs-5 fw-bold' %>
+          </div>
+          <div class="input-group mb-1">
+            <span class="input-group-text input-group-text-fixed bg-primary text-white">
+              <i class="fa-solid fa-bowl-food fs-5 fw-bold"></i>
+              &nbsp
+              <%= form.label :food_cost, step: 0.01, class: "fs-5 fw-bold" %>
+            </span>
+            <%= form.number_field :food_cost, step: 0.01, class: 'form-control fs-5 fw-bold' %>
+          </div>
+          <div class="input-group mb-1">
+            <span class="input-group-text input-group-text-fixed bg-primary text-white">
+              <i class="fa-solid fa-ticket fs-5 fw-bold"></i>
+              &nbsp
+              <%= form.label :ticket_cost, step: 0.01, class: "fs-5 fw-bold" %>
+            </span>
+            <%= form.number_field :ticket_cost, step: 0.01, class: 'form-control fs-5 fw-bold' %>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="input-group mb-1">
+            <span class="input-group-text input-group-text-fixed bg-primary text-white">
+              <i class="fa-solid fa-bed fs-5 fw-bold"></i>
+              &nbsp
+              <%= form.label :room_cost, step: 0.01, class: "fs-5 fw-bold" %>
+            </span>
+            <%= form.number_field :room_cost, step: 0.01, class: 'form-control fs-5 fw-bold' %>
+          </div>
+          <div class="input-group mb-1">
+            <span class="input-group-text input-group-text-fixed bg-primary text-white">
+              <i class="fa-solid fa-money-bill-wave fs-5 fw-bold"></i>
+              &nbsp
+              <%= form.label :generic_cost, step: 0.01, class: "fs-5 fw-bold" %>
+            </span>
+            <%= form.number_field :generic_cost, step: 0.01, class: 'form-control fs-5 fw-bold' %>
+          </div>
+          <!-- Preffilled or Free Fields -->
+          <div class="row m-1" id="divRoad" style="display:block" data-controller="reimbursement">
+            <div class="col p-3">
+              <div class="form-check form-check-inline form-switch">
+                <input class="form-check-input fs-5 fw-bold" type="checkbox" value="" id="checkboxPrefilled" data-action="click->reimbursement#ShowHidePrefilledSection">
+                <label class="form-check-label text-primary fs-5 fw-bold" for="checkboxPrefilled">
+                  Usa i Moduli Memorizzati
+                </label>
+              </div>
+              <div class="form-check form-check-inline form-switch">
+                <input class="form-check-input fs-5 fw-bold" type="checkbox" value="" id="checkboxFree" data-action="click->reimbursement#ShowHidePrefilledSection">
+                <label for="" class="form-check-label text-primary fs-5 fw-bold" for="checkboxFree">
+                  Usa i Campi Liberi
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Prefilled Fields -->
+      <div class="row mt-1" id="formPrefilled" style="<%= conditional_syle_prefilled_forms(reimbursement) %>">
+        <div class="col">
+          <div class="card border-primary bg-light mb-1">
+            <div class="card-header bg-light">
+              <strong class="text-primary">
+                <i class="fa-solid fa-cog"></i>
+                &nbsp;
+                Moduli Memorizzati
+              </strong>
+            </div>
+            <div class="card-body">
+              <div class="input-group mb-1">
+                <span class="input-group-text input-group-text-fixed bg-primary text-white">
+                  <i class="fa-solid fa-file-pen"></i>
+                  &nbsp;&nbsp;
+                  <%= form.label :reason %>
+                </span>
+                <%= form.collection_select(:reason_id, Reason.where(user_id: current_user.id).order(position: "ASC"), :id, :name, {:include_blank => true}, {:class => "form-select"}) %>
+              </div>
+              <div class="input-group mb-1">
+                <span class="input-group-text input-group-text-fixed bg-primary text-white">
+                  <i class="fa-solid fa-location-dot"></i>
+                  &nbsp;&nbsp;
+                  <%= form.label :place %>
+                </span>
+                <%= form.collection_select(:place_id, Place.where(user_id: current_user.id).order(position: "ASC"), :id, :name, {:include_blank => true}, {:class => "form-select"}) %>
+              </div>
+              <div class="input-group mb-1">
+                <span class="input-group-text input-group-text-fixed bg-primary text-white">
+                  <i class="fa-solid fa-building"></i>
+                  &nbsp;&nbsp;
+                  <%= form.label :structure %>
+                </span>
+                <%= form.collection_select(:structure_id, Structure.where(user_id: current_user.id).order(position: "ASC"), :id, :name, {:include_blank => true}, {:class => "form-select"}) %>
+              </div>
+              <div class="input-group mb-1">
+                <span class="input-group-text input-group-text-fixed bg-primary text-white">
+                  <i class="fa-solid fa-road"></i>
+                  &nbsp;&nbsp;
+                  <%= form.label :road %>
+                </span>
+                <%= form.collection_select(:road_id, Road.where(user_id: current_user.id).order(position: "ASC"), :id, :name, {:include_blank => true}, {:class => "form-select"}) %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Free Fields -->
+      <div class="row mt-1" id="formFree" style="<%= conditional_syle_free_forms(reimbursement) %>">
+        <div class="col">
+          <div class="card border-primary bg-light mb-1">
+            <div class="card-header bg-light">
+              <strong class="text-primary">
+                <i class="fa-solid fa-pen-to-square"></i>
+                &nbsp;
+                Campi Liberi
+              </strong>
+            </div>
+            <div class="card-body">
+              <div class="input-group mb-1">
+                <span class="input-group-text input-group-text-fixed bg-primary text-white">
+                  <i class="fa-solid fa-file-pen"></i>
+                  &nbsp;&nbsp;
+                  <%= form.label :reason_fr %>
+                </span>
+                <%= form.text_field :reason_fr, class: 'form-control' %>
+              </div>
+              <div class="input-group mb-1">
+                <span class="input-group-text input-group-text-fixed bg-primary text-white">
+                  <i class="fa-solid fa-location-dot"></i>
+                  &nbsp;&nbsp;
+                  <%= form.label :place_fr %>
+                </span>
+                <%= form.text_field :place_fr, class: 'form-control' %>
+              </div>
+              <div class="input-group mb-1">
+                <span class="input-group-text input-group-text-fixed bg-primary text-white">
+                  <i class="fa-solid fa-building"></i>
+                  &nbsp;&nbsp;
+                  <%= form.label :structure_fr %>
+                </span>
+                <%= form.text_field :structure_fr, class: 'form-control' %>
+              </div>
+              <div class="input-group mb-1">
+                <span class="input-group-text input-group-text-fixed bg-primary text-white">
+                  <i class="fa-solid fa-road"></i>
+                  &nbsp;&nbsp;
+                  <%= form.label :road_fr %>
+                </span>
+                <%= form.text_field :road_fr, class: 'form-control' %>
+              </div>
+              <div class="input-group mb-1">
+                <span class="input-group-text input-group-text-fixed bg-primary text-white">
+                  <i class="fa-solid fa-road"></i>
+                  &nbsp;&nbsp;
+                  <%= form.label :road_lenght_fr %>
+                </span>
+                <%= form.number_field :road_lenght_fr, step: 0.01, class: 'form-control' %>
+              </div>
+              <div class="input-group mb-1">
+                <span class="input-group-text input-group-text-fixed bg-primary text-white">
+                  <i class="fa-solid fa-road"></i>
+                  &nbsp;&nbsp;
+                  <%= form.label :highway_cost_fr %>
+                </span>
+                <%= form.number_field :highway_cost_fr, step: 0.01, class: 'form-control' %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col">
+          <span class="float-end">
+            <div class="d-grid">
+              <%= form.submit class: 'btn btn-success shadow fs-5 fw-bold' %>
+            </div>
+          </span>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

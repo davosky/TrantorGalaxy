@@ -15,6 +15,7 @@ it:
       place: Luogo
       structure: Struttura
       reason: Motivo Missione
+      reimbursement: Rimborso Spese
     simple_calendar:
       previous: "<<"
       next: ">>"
@@ -48,7 +49,17 @@ it:
         gender: Sesso
         created_at: Creato Il
         updated_at: Aggiornato il
+        signature: Firma
+        validator_signature: Firma Validatore
+        confirmator_signature: Firma Confermatore
+        institute_logo: Logo Istituto
         veichles: Veicoli
+        transports: Trasporti
+        roads: Percorsi
+        places: Luoghi
+        structures: Strutture
+        reasons: Motivi missione
+        reimbursements: Rimborsi Spese
       vehicle:
         name: Modello
         producer: Produttore
@@ -96,6 +107,43 @@ it:
         updated_at: Aggiornato il
         user: Utente
         user_id: Utente
+      reimbursement:
+        name: Numero
+        departure_date: Data Partenza
+        return_date: Data Ritorno
+        request_date: Data Richiesta
+        reimbursement_date: Data Rimborso
+        parking_cost: Parcheggio
+        food_cost: Vitto
+        room_cost: Alloggio
+        ticket_cost: Ticket
+        generic_cost: Varie
+        total_amount: Totale
+        user: Utente
+        user_id: Utente
+        user_fr: Utente
+        place: Luogo
+        place_id: Luogo
+        place_fr: Luogo
+        reason: Motivo
+        reason_id: Motivo
+        reason_fr: Motivo
+        road: Percorso
+        road_id: Percorso
+        road_fr: Percorso
+        structure: Struttura
+        structure_id: Struttura
+        structure_fr: Struttura
+        transport: Trasporto
+        transport_id: Trasporto
+        transport_fr: Trasporto
+        highway_cost_fr: Autostrada
+        road_lenght_fr: Lunghezza
+        vehicle: Veicolo
+        vehicle_id: Veicolo
+        vehicle_fr: Veicolo
+        created_at: Creato il
+        updated_at: Aggiornato il
     errors:
       messages:
         record_invalid: "Validazione fallita: %{errors}"

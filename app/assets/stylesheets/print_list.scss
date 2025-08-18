@@ -1,0 +1,126 @@
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+body {
+  position: relative;
+  width: 21cm;
+  height: 29.7cm;
+  margin: 0 auto;
+  color: #000000;
+  background: #ffffff;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+}
+
+span.span-right {
+  float: right;
+}
+span.span-left {
+  float: left;
+}
+
+table thead tr th {
+  text-align: left;
+  border-bottom: 2px solid #000;
+}
+
+table tbody tr td {
+  text-align: left;
+  border-bottom: 1px solid #555555;
+}
+
+.td-institute {
+  min-width: 60mm;
+}
+
+.td-date {
+  min-width: 30mm;
+}
+
+.hr-dotted {
+  border-top: 2px dotted #555555;
+}
+
+.header {
+  padding: 10px 0;
+  margin-bottom: 30px;
+}
+
+.blue-header {
+  vertical-align: middle;
+  color: #137da5;
+  border: 2px solid #137da5;
+  border-radius: 5px;
+  padding: 6px;
+}
+
+.title {
+  list-style-type: none;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.hr-big {
+  height: 2px;
+  background-color: none;
+  border-top: 2px dotted #137da5;
+}
+
+.hr-small {
+  height: 1px;
+  background-color: none;
+  border-top: 1px solid #137da5;
+}
+
+.pdf-header {
+  margin-bottom: 50mm;
+}
+
+.logo {
+  display: inline-block;
+}
+
+.smallandlite {
+  text-align: center;
+  font-size: 6pt;
+  font-family: Tahoma, Helvetica, sans-serif;
+}
+
+.smallandliteleft {
+  text-align: left;
+  font-size: 6pt;
+  font-family: Tahoma, Helvetica, sans-serif;
+}
+
+.footer {
+  color: #555555;
+  width: 100%;
+  height: 10px;
+  position: absolute;
+  bottom: 0;
+  padding: 8px 0;
+  text-align: center;
+}
+
+@page {
+  size: A4;
+  orientation: protrait;
+  margin: 0;
+}
+
+@media print {
+  .page {
+    margin: 0;
+    border: initial;
+    border-radius: initial;
+    width: initial;
+    min-height: initial;
+    box-shadow: initial;
+    background: initial;
+    page-break-after: always;
+  }
+}

@@ -1,0 +1,231 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset='utf-8'/>
+    <%= stylesheet_link_tag wicked_pdf_asset_base64('print.scss') %>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <% @reimbursements.each do |reimbursement| %>
+            <div class="pdf-header">
+              <span class="span-right">
+                <img src="<%= reimbursement.user.institute_logo.url %>" alt=""/>
+              </span>
+            </div>
+            <h2>
+              <br/>
+              <%= inline_svg('pdf/cgil_logo.svg', preserve_aspect_ratio: 'xMaxYMax meet') %>
+              <strong>
+                &nbsp;&nbsp;&nbsp;<%= reimbursement.user.institute %>
+              </strong>
+            </h2>
+            <hr class="hr-small"/>
+            <span class="span-right">
+              <%= inline_svg('pdf/file_mission.svg', preserve_aspect_ratio: 'xMaxYMax meet') %>
+            </span>
+            <br/>
+            <p>
+              <%= reimbursement.user.validator_presentation %> di 
+              <strong>
+                <%= reimbursement.user.institute %>
+                <%= reimbursement.user.validator %>
+              </strong>
+              autorizza:
+              <br>
+              <strong>
+                <%= "#{reimbursement.user.first_name} #{reimbursement.user.last_name}".html_safe %>
+              </strong>
+              alla missione con il seguente mezzo di trasporto:
+              <br/>
+              <br/>
+              <strong>
+                <%= reimbursement.transport_fr %>
+              </strong>
+            </p>
+            <% if reimbursement.transport_fr == "Veicolo Aziendale" || reimbursement.transport_fr == "Veicolo Privato" %>
+              <p>
+                <strong><%= reimbursement.vehicle_fr %></strong>
+              </p>
+            <% end %>
+            <p>
+              <p>
+                Luogo della Missione:&nbsp;&nbsp;<strong><%= reimbursement.place_fr %></strong>
+                &nbsp;&nbsp;
+                Motivo del viaggio:&nbsp;&nbsp;<strong><%= reimbursement.reason_fr %></strong>
+              </p>
+              <p>
+                Partenza il:&nbsp;&nbsp;<strong><%= l(reimbursement.departure_date) %></strong>
+                &nbsp;&nbsp;
+                Rientro il:&nbsp;&nbsp;<strong><%= l(reimbursement.return_date) %></strong>
+              </p>
+              <p>
+                <table>
+                  <thead>
+                    <tr>
+                      <td>Firma de 
+                        <br/>
+                        <%= reimbursement.user.validator_presentation %>:
+                      </td>
+                      <td>Data:</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <% if reimbursement.user.validator_signature? %>
+                          <%= wicked_pdf_image_tag(reimbursement.user.validator_signature.url, :size => "140x54", :crop => :fill) %>
+                        <% end %>
+                        <br/>
+                        ------------------------------------------
+                      </td>
+                      <td>
+                        <strong>
+                          <%= l(reimbursement.request_date) %></td>
+                      </strong>
+                    </tr>
+                  </tbody>
+                </table>
+              </p>
+              <p>
+                <hr class="hr-small"/>
+                <span class="span-right">
+                  <%= inline_svg('pdf/file_reimbursement.svg', preserve_aspect_ratio: 'xMaxYMax meet') %>
+                </span>
+              </p>
+              <p>
+                Rimborso spese di:&emsp;
+                <strong>
+                  <%= "#{reimbursement.user.first_name} #{reimbursement.user.last_name}" %>
+                </strong>
+              </p>
+              <p>
+                Percorso:&nbsp;
+                <strong>
+                  <%= reimbursement.road_fr %>
+                </strong>
+                <br/>
+                <br/>
+                Lunghezza:
+                &nbsp;
+                <strong>
+                  <%= reimbursement.road_lenght_fr %>
+                  &nbsp;
+                  Km
+                </strong>
+                <% if reimbursement.transport_fr == "Veicolo Privato" %>
+                  &nbsp;
+                  Costo al Km:
+                  &nbsp;
+                  <strong>
+                    <%= number_to_currency(reimbursement.vehicle.cost_per_km) %>
+                  </strong>
+                  &nbsp;
+                  Totale:
+                  &nbsp;
+                  <strong>
+                    <%= "#{number_to_currency(reimbursement.vehicle.cost_per_km * reimbursement.road_lenght_fr)}"%>
+                  </strong>
+                <% end %>
+                <br/>
+                ---------------------------------------------------------------------------------------------------------
+              </p>
+              <table>
+                <thead>
+                  <th></th>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Vitto:</td>
+                    <td>&emsp;<strong><%= number_to_currency(reimbursement.food_cost) unless reimbursement.food_cost == 0.0 %></strong></td>
+                  </tr>
+                  <tr>
+                    <td>Alloggio:</td>
+                    <td>&emsp;<strong><%= number_to_currency(reimbursement.room_cost) unless reimbursement.room_cost == 0.0 %></strong></td>
+                  </tr>
+                  <tr>
+                    <td>Ticket:</td>
+                    <td>&emsp;<strong><%= number_to_currency(reimbursement.ticket_cost) unless reimbursement.ticket_cost == 0.0 %></strong></td>
+                  </tr>
+                  <tr>
+                    <td>Varie:</td>
+                    <td>&emsp;<strong><%= number_to_currency(reimbursement.generic_cost) unless reimbursement.generic_cost == 0.0 %></strong></td>
+                  </tr>
+                  <tr>
+                    <td>Autostrada:</td>
+                    <td>&emsp;<strong><%= number_to_currency(reimbursement.highway_cost_fr) unless reimbursement.highway_cost_fr == 0.0 %></strong></td>
+                  </tr>
+                  <tr>
+                    <td>Parcheggio:</td>
+                    <td>&emsp;<strong><%= number_to_currency(reimbursement.parking_cost) unless reimbursement.parking_cost == 0.0 %></strong></td>
+                  </tr>
+                  <tr>
+                    <td>Costo Km Totali:</td>
+                    <td>&emsp;<strong>
+                        <% if reimbursement.transport_fr == "Veicolo Privato" %>
+                          <%= "#{number_to_currency(reimbursement.vehicle.cost_per_km * reimbursement.road_lenght_fr)}"%>
+                        <% end %>
+                      </strong></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <h3>
+                        Totale:
+                      </h3>
+                    </td>
+                    <td>
+                      <h3>
+                        &emsp;<strong><%= number_to_currency(reimbursement.total_amount) %></strong></td>
+                    </h3>
+                  </tr>
+                </tbody>
+              </table>
+              ---------------------------------------------------------------------------------------------------------
+              <br/>
+              <table>
+                <thead>
+                  <tr>
+                    <td>Firma del Richiedente:</td>
+                    <td>Data:</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                  </tr>
+                  <tr></tr>
+                  <tr>
+                    <td>
+                      <% if reimbursement.user.signature? %>
+                        <%= wicked_pdf_image_tag(reimbursement.user.signature.url, :size => "140x54", :crop => :fill) %>
+                      <% end %>
+                      <br>
+                      ------------------------------------------
+                    </td>
+                    <td>
+                      <strong>
+                        <%= l(reimbursement.reimbursement_date) %>
+                      </strong>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <p>
+                <%= "#{reimbursement.user.confirmator_presentation}&nbsp;<strong>#{reimbursement.user.confirmator}</strong>".html_safe %>&nbsp;autorizza il pagamento:
+                <br/>
+                <% if reimbursement.user.confirmator_signature? %>
+                  <%= wicked_pdf_image_tag(reimbursement.user.confirmator_signature.url, :size => "140x54", :crop => :fill) %>
+                <% end %>
+                <br/>
+                ---------------------------------------------------------------------
+              </p>
+            </div>
+            <p style='page-break-before: always'>
+              <p style='page-break-after: always'>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </body>
+  </html>
