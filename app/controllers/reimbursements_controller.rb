@@ -17,6 +17,7 @@ class ReimbursementsController < ApplicationController
 
   def print
     @q = Reimbursement.ransack(params[:q])
+
     @reimbursements = @q.result(distinct: true).order(name: "DESC").where(user_id: current_user.id)
     respond_to do |format|
       format.html
@@ -26,6 +27,7 @@ class ReimbursementsController < ApplicationController
   end
 
   def print_list
+    @user = current_user
     @q = Reimbursement.ransack(params[:q])
     @reimbursements = @q.result(distinct: true).order(name: "DESC").where(user_id: current_user.id)
     respond_to do |format|

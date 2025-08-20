@@ -11,19 +11,19 @@
           <% @reimbursements.each do |reimbursement| %>
             <div class="pdf-header">
               <span class="span-right">
-                <img src="<%= reimbursement.user.institute_logo.url %>" alt=""/>
+                <%= inline_svg('pdf/reimbursements-logo-modulo.svg', preserve_aspect_ratio: 'xMaxYMax meet') %>
               </span>
             </div>
             <h2>
               <br/>
-              <%= inline_svg('pdf/cgil_logo.svg', preserve_aspect_ratio: 'xMaxYMax meet') %>
+              <%= wicked_pdf_image_tag(reimbursement.user.institute_logo.url, :crop => :fill) %>
               <strong>
                 &nbsp;&nbsp;&nbsp;<%= reimbursement.user.institute %>
               </strong>
             </h2>
             <hr class="hr-small"/>
             <span class="span-right">
-              <%= inline_svg('pdf/file_mission.svg', preserve_aspect_ratio: 'xMaxYMax meet') %>
+              <%= inline_svg('pdf/file-mission.svg', preserve_aspect_ratio: 'xMaxYMax meet') %>
             </span>
             <br/>
             <p>
@@ -91,7 +91,7 @@
               <p>
                 <hr class="hr-small"/>
                 <span class="span-right">
-                  <%= inline_svg('pdf/file_reimbursement.svg', preserve_aspect_ratio: 'xMaxYMax meet') %>
+                  <%= inline_svg('pdf/file-reimbursement.svg', preserve_aspect_ratio: 'xMaxYMax meet') %>
                 </span>
               </p>
               <p>
