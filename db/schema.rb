@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_08_18_110645) do
+ActiveRecord::Schema[7.2].define(version: 2025_08_22_143436) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -30,6 +30,28 @@ ActiveRecord::Schema[7.2].define(version: 2025_08_18_110645) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_reasons_on_user_id"
+  end
+
+  create_table "reimbursement_closures", force: :cascade do |t|
+    t.string "year"
+    t.string "month"
+    t.string "period"
+    t.boolean "payment"
+    t.date "payment_date"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "name"
+    t.string "print_reimbursement"
+    t.string "summary_reimbursement"
+    t.string "highway_movement_reimbursement"
+    t.string "receipt_one_reimbursement"
+    t.string "receipt_two_reimbursement"
+    t.string "receipt_three_reimbursement"
+    t.string "receipt_four_reimbursement"
+    t.string "receipt_five_reimbursement"
+    t.string "receipt_six_reimbursement"
+    t.index ["user_id"], name: "index_reimbursement_closures_on_user_id"
   end
 
   create_table "reimbursements", force: :cascade do |t|
@@ -142,6 +164,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_08_18_110645) do
 
   add_foreign_key "places", "users"
   add_foreign_key "reasons", "users"
+  add_foreign_key "reimbursement_closures", "users"
   add_foreign_key "roads", "users"
   add_foreign_key "structures", "users"
   add_foreign_key "vehicles", "users"

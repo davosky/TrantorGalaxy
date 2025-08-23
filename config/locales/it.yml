@@ -16,6 +16,7 @@ it:
       structure: Struttura
       reason: Motivo Missione
       reimbursement: Rimborso Spese
+      reimbursement_closure: Chiusura Rimborsi
     simple_calendar:
       previous: "<<"
       next: ">>"
@@ -142,6 +143,24 @@ it:
         vehicle: Veicolo
         vehicle_id: Veicolo
         vehicle_fr: Veicolo
+        created_at: Creato il
+        updated_at: Aggiornato il
+      reimbursement_closure:
+        name: Numero
+        year: Anno
+        month: Mese
+        period: Periodo
+        payment: Pagamento
+        payment_date: Data Pagamento
+        print_reimbursement: Stampa Rimborsi
+        summary_reimbursement: Riepilogo
+        highway_movement_reimbursement: Telepass
+        receipt_one_reimbursement: Cedolini 1
+        receipt_two_reimbursement: Cedolini 2
+        receipt_three_reimbursement: Cedolini 3
+        receipt_four_reimbursement: Cedolini 4
+        receipt_five_reimbursement: Cedolini 5
+        receipt_six_reimbursement: Cedolini 6
         created_at: Creato il
         updated_at: Aggiornato il
     errors:

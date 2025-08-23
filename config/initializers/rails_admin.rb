@@ -57,6 +57,12 @@ RailsAdmin.config do |config|
     label_plural "Rimborsi Spese"
   end
 
+  config.model "ReimbursementClosure" do
+    visible true
+    label "Chiusura Rimborsi"
+    label_plural "Chiusure Rimborsi"
+  end
+
   config.actions do
     dashboard
     index

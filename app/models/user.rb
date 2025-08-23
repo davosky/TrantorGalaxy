@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :structures
   has_many :reasons
   has_many :reimbursements
+  has_many :reimbursement_closures
 
   mount_uploader :signature, SignatureUploader
   mount_uploader :validator_signature, ValidatorSignatureUploader

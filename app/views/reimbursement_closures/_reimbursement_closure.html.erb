@@ -1,0 +1,26 @@
+<tr id="<%= dom_id reimbursement_closure %>">
+  <td class="d-grid">
+    <%= link_to reimbursement_closure, class: "btn btn-sm btn-info shadow", data: { turbo: true, turbo_frame: 'modal' }, title: "Visualizza il Record Corrente" do %>
+      <span class="fs-5 fw-bold">
+        <%= reimbursement_closure.name %>
+      </span>
+    <% end %>
+  </td>
+  <td class="fs-5 fw-bold text-dark text-center"><%= reimbursement_closure.year %></td>
+  <td class="fs-5 fw-bold text-dark text-center"><%= reimbursement_closure.month %></td>
+  <td class="fs-5 fw-bold text-dark text-center"><%= reimbursement_closure.period %></td>
+  <td class="fs-5 fw-bold text-dark text-center"><%= payed(reimbursement_closure) %></td>
+  <td class="fs-5 fw-bold text-dark text-center">
+    <%= reimbursement_closure&.payment_date ? l(reimbursement_closure.payment_date) : "" %>
+  </td>
+  <td class="fs-5 fw-bold text-dark text-center">
+    <%= link_to edit_reimbursement_closure_path(reimbursement_closure), class: "btn btn-sm btn-warning shadow", data: { turbo: true, turbo_frame: 'modal' }, title: "Modifica il Record Corrente" do %>
+      <i class="fa-solid fa-pencil"></i>
+    <% end %>
+  </td>
+  <td class="fs-5 fw-bold text-dark text-center">
+    <%= link_to reimbursement_closure, class: "btn btn-sm btn-danger shadow", method: :delete, data: { "turbo-method": :delete, turbo_confirm: "Sicuri di voler eliminare il record corrente?" } do %>
+      <i class="fa-solid fa-trash"></i>
+    <% end %>
+  </td>
+</tr>

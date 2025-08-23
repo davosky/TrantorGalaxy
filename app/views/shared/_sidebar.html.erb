@@ -2,12 +2,12 @@
   <nav class="sidebar d-flex flex-column p-3 rounded bg-light">
     <ul class="nav nav-pills flex-column mb-auto">
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown" href="#" id="productsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <a class="nav-link dropdown" href="#" id="serviceDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           <i class="fa-solid fa-gears"></i>
           &nbsp;
           Servizio
         </a>
-        <ul class="dropdown-menu" aria-labelledby="productsDropdown">
+        <ul class="dropdown-menu" aria-labelledby="serviceDropdown">
           <%= link_to vehicles_path, class: "dropdown-item" do %>
             <i class="fa-solid fa-car"></i>
             Veicoli
@@ -35,12 +35,12 @@
         </ul>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown" href="#" id="productsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <a class="nav-link dropdown" href="#" id="reimbursementDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           <i class="fa-solid fa-receipt"></i>
           &nbsp;
           Rimborsi
         </a>
-        <ul class="dropdown-menu" aria-labelledby="productsDropdown">
+        <ul class="dropdown-menu" aria-labelledby="reimbursementDropdown">
           <%= link_to reimbursements_path, class: "dropdown-item" do %>
             <i class="fa-solid fa-list-ul"></i>
             <i class="fa-solid fa-receipt"></i>
@@ -61,8 +61,20 @@
           <% end %>
         </ul>
       </li>
-      <li>
-        <a href="#" class="nav-link">Link</a>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown" href="#" id="reimbursement_closureDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fa-solid fa-unlock-keyhole"></i>
+          &nbsp;
+          Chiusure
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="reimbursement_closureDropdown">
+          <%= link_to reimbursement_closures_path, class: "dropdown-item" do %>
+            <i class="fa-solid fa-list-ul"></i>
+            <i class="fa-solid fa-unlock-keyhole"></i>
+            &nbsp;
+            Elenco Chiusure Rimborsi
+          <% end %>
+        </ul>
       </li>
     </ul>
   </nav>

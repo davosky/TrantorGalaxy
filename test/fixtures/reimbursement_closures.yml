@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  year: MyString
+  month: MyString
+  period: MyString
+  payment: false
+  payment_date: 2025-08-20
+  user: one
+
+two:
+  year: MyString
+  month: MyString
+  period: MyString
+  payment: false
+  payment_date: 2025-08-20
+  user: two

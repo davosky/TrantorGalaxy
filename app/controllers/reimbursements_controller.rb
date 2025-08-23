@@ -41,7 +41,7 @@ class ReimbursementsController < ApplicationController
     @reimbursement = current_user.reimbursements.build(reimbursement_params)
 
     if @reimbursement.save
-      redirect_to reimbursements_url, notice: "Il Percorso è stato creato con successo."
+      redirect_to reimbursements_url, notice: "Il Rimborso è stato creato con successo."
     else
       render :form_update, status: :unprocessable_entity
     end
@@ -49,7 +49,7 @@ class ReimbursementsController < ApplicationController
 
   def update
     if @reimbursement.update(reimbursement_params)
-      redirect_to reimbursements_url, notice: "Il Percorso è stato modificato con successo."
+      redirect_to reimbursements_url, notice: "Il Rimborso è stato modificato con successo."
     else
       render :form_update, status: :unprocessable_entity
     end
@@ -58,7 +58,7 @@ class ReimbursementsController < ApplicationController
   def destroy
     @reimbursement.destroy!
 
-    redirect_to reimbursements_url, notice: "Il Percorso è stato eliminato con successo."
+    redirect_to reimbursements_url, notice: "Il Rimborso è stato eliminato con successo."
   end
 
   private

@@ -1,0 +1,155 @@
+<div class="card">
+  <div class="card-header bg-light">
+    <span class="float-start fs-3 fw-bold text-primary">
+      <%= image_tag(page_reimbursement_closure, class: "img-fluid") %>
+      &emsp;
+      <%= page_title_reimbursement_closure %>
+    </span>
+    <span class="float-end">
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </span>
+  </div>
+  <div class="card-body bg-light">
+    <div class="row">
+      <div class="col-6">
+        <ul class="list-group">
+          <li class="list-group-item d-flex justify-content-between align-items-center fs-5">
+            Numero:
+            <span class="pill fs-5 fw-bold">
+              <%= @reimbursement_closure.name %>
+            </span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center fs-5">
+            Anno:
+            <span class="pill fs-5 fw-bold">
+              <%= @reimbursement_closure.year %>
+            </span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center fs-5">
+            Mese:
+            <span class="pill fs-5 fw-bold">
+              <%= @reimbursement_closure.month %>
+            </span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center fs-5">
+            Periodo:
+            <span class="pill fs-5 fw-bold">
+              <%= @reimbursement_closure.period %>
+            </span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center fs-5">
+            Pagamento Effettuato:
+            <span class="pill fs-5 fw-bold">
+              <%= payed(@reimbursement_closure) %>
+            </span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center fs-5">
+            Data Pagamento:
+            <span class="pill fs-5 fw-bold">
+              <%= @reimbursement_closure&.payment_date ? l(@reimbursement_closure.payment_date) : "" %>
+            </span>
+          </li>
+        </ul>
+      </div>
+      <div class="col-6">
+        <div class="d-grid gap-2">
+          <% unless !@reimbursement_closure.print_reimbursement.url.present? %>
+            <%= link_to @reimbursement_closure.print_reimbursement.url, class: 'btn btn-primary mb-3', target: '_blank'  do %>
+              <i class="fa-solid fa-download"></i>
+              &nbsp;
+              <i class='far fa-file-pdf'></i>
+              &emsp;
+              Allegato Rimborsi
+            <% end %>
+          <% end %>
+        </div>
+        <div class="d-grid gap-2">
+          <% unless !@reimbursement_closure.summary_reimbursement.url.present? %>
+            <%= link_to @reimbursement_closure.summary_reimbursement.url, class: 'btn btn-primary mb-3', target: '_blank'  do %>
+              <i class="fa-solid fa-download"></i>
+              &nbsp;
+              <i class='far fa-file-pdf'></i>
+              &emsp;
+              Allegato Riepilogo
+            <% end %>
+          <% end %>
+        </div>
+        <div class="d-grid gap-2">
+          <% unless !@reimbursement_closure.highway_movement_reimbursement.present? %>
+            <%= link_to @reimbursement_closure.highway_movement_reimbursement.url, class: 'btn btn-primary mb-3', target: '_blank'  do %>
+              <i class="fa-solid fa-download"></i>
+              &nbsp;
+              <i class='far fa-file-pdf'></i>
+              &emsp;
+              Allegato Telepass
+            <% end %>
+          <% end %>
+        </div>
+        <div class="d-grid gap-2">
+          <% unless !@reimbursement_closure.receipt_one_reimbursement.present? %>
+            <%= link_to @reimbursement_closure.receipt_one_reimbursement.url, class: 'btn btn-primary mb-3', target: '_blank'  do %>
+              <i class="fa-solid fa-download"></i>
+              &nbsp;
+              <i class='far fa-file-pdf'></i>
+              &emsp;
+              Allegato Cedolini 1
+            <% end %>
+          <% end %>
+        </div>
+        <div class="d-grid gap-2">
+          <% unless !@reimbursement_closure.receipt_two_reimbursement.present? %>
+            <%= link_to @reimbursement_closure.receipt_two_reimbursement.url, class: 'btn btn-primary mb-3', target: '_blank'  do %>
+              <i class="fa-solid fa-download"></i>
+              &nbsp;
+              <i class='far fa-file-pdf'></i>
+              &emsp;
+              Allegato Cedolini 2
+            <% end %>
+          <% end %>
+        </div>
+        <div class="d-grid gap-2">
+          <% unless !@reimbursement_closure.receipt_three_reimbursement.present? %>
+            <%= link_to @reimbursement_closure.receipt_three_reimbursement.url, class: 'btn btn-primary mb-3', target: '_blank'  do %>
+              <i class="fa-solid fa-download"></i>
+              &nbsp;
+              <i class='far fa-file-pdf'></i>
+              &emsp;
+              Allegato Cedolini 3
+            <% end %>
+          <% end %>
+        </div>
+        <div class="d-grid gap-2">
+          <% unless !@reimbursement_closure.receipt_four_reimbursement.present? %>
+            <%= link_to @reimbursement_closure.receipt_four_reimbursement.url, class: 'btn btn-primary mb-3', target: '_blank'  do %>
+              <i class="fa-solid fa-download"></i>
+              &nbsp;
+              <i class='far fa-file-pdf'></i>
+              &emsp;
+              Allegato Cedolini 4
+            <% end %>
+          <% end %>
+        </div>
+        <div class="d-grid gap-2">
+          <% unless !@reimbursement_closure.receipt_five_reimbursement.present? %>
+            <%= link_to @reimbursement_closure.receipt_five_reimbursement.url, class: 'btn btn-primary mb-3', target: '_blank'  do %>
+              <i class="fa-solid fa-download"></i>
+              &nbsp;
+              <i class='far fa-file-pdf'></i>
+              Allegato Cedolini 5
+            <% end %>
+          <% end %>
+        </div>
+        <div class="d-grid gap-2">
+          <% unless !@reimbursement_closure.receipt_six_reimbursement.present? %>
+            <%= link_to @reimbursement_closure.receipt_six_reimbursement.url, class: 'btn btn-primary mb-3', target: '_blank'  do %>
+              <i class="fa-solid fa-download"></i>
+              &nbsp;
+              <i class='far fa-file-pdf'></i>
+              Allegato Cedolini 6
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

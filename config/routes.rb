@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       get :print_list
     end
   end
+  resources :reimbursement_closures
 
   devise_for :users, skip: [:registrations]
   as :user do
