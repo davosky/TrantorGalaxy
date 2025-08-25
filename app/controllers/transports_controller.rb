@@ -26,7 +26,7 @@ class TransportsController < ApplicationController
   end
 
   def update
-    if @transport.name == "Veicolo Aziendale" || @transport.name == "Veicolo Privato"
+    if @transport.name == "Veicolo Aziendale" || @transport.name == "Veicolo Privato" || @transport.identifier == 1 || @transport.identifier == 2
       redirect_to transports_url, notice: "Record di sistema non modificabile"
     else
       if @transport.update(transport_params)
@@ -38,7 +38,7 @@ class TransportsController < ApplicationController
   end
 
   def destroy
-    if @transport.name == "Veicolo Aziendale" || @transport.name == "Veicolo Privato"
+    if @transport.name == "Veicolo Aziendale" || @transport.name == "Veicolo Privato" || @transport.identifier == 1 || @transport.identifier == 2
       redirect_to transports_url, notice: "Record di sistema non cancellabile"
     else
       @transport.destroy!

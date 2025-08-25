@@ -2,6 +2,7 @@ source "https://rubygems.org"
 
 gem "bcrypt", "~> 3.1.7"
 gem "bootsnap", require: false
+gem "cancancan", "~> 3.6", ">= 3.6.1"
 gem "carrierwave", "~> 3.1", ">= 3.1.2"
 gem "cssbundling-rails"
 gem "devise", "~> 4.9", ">= 4.9.4"

@@ -26,4 +26,8 @@ class ReimbursementClosure < ApplicationRecord
   validates :year, presence: true
   validates_presence_of :month, unless: :period?
   validates_presence_of :period, unless: :month?
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["created_at", "highway_movement_reimbursement", "id", "id_value", "month", "name", "payment", "payment_date", "period", "print_reimbursement", "receipt_five_reimbursement", "receipt_four_reimbursement", "receipt_one_reimbursement", "receipt_six_reimbursement", "receipt_three_reimbursement", "receipt_two_reimbursement", "summary_reimbursement", "updated_at", "user_id", "year"]
+  end
 end

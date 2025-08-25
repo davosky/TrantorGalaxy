@@ -1,0 +1,85 @@
+<div class="card">
+  <div class="card-body">
+    <%= form_with(model: reimbursement_closure) do |form| %>
+      <div class="row">
+        <div class="row">
+          <div class="col">
+            <span class="float-start fs-3 fw-bold text-primary">
+              <%= image_tag(page_reimbursement_closure, class: "img-fluid") %>
+              &emsp;
+              <%= page_title_reimbursement_closure %>
+            </span>
+            <span class="float-end">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </span>
+          </div>
+          <hr class="text-dark m-2"/>
+        </div>
+        <% if reimbursement_closure.errors.any? %>
+          <div class="col bg-danger text-white rounded mb-3">
+            <h2><%= pluralize(reimbursement_closure.errors.count, "errori") %>&emsp;hanno impedito in salvataggio:</h2>
+            <ul>
+              <% reimbursement_closure.errors.each do |error| %>
+                <li class="fs-5 fw-bold"><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+      </div>
+      <% unless !current_user.admin == true && !current_user.payroll == true %>
+        <% unless reimbursement_closure.payment == true %>
+          <div class="row">
+            <div class="col-2">
+              <span class="float-start">
+                <%= form.check_box :payment, class: "form-check-input border-primary fs-5 fw-bold" %>
+                &nbsp;
+                <%= form.label :payment, class: "form-check-label fs-5 fw-bold text-primary"%>
+                &emsp;
+              </span>
+            </div>
+            <div class="col-6">
+              <div class="input-group">
+                <span class="input-group-text input-group-text-fixed bg-primary text-white">
+                  <i class="fa-solid fa-calendar-day fs-5 fw-bold"></i>
+                  &nbsp
+                  <%= form.label :payment_date, class: "fs-5 fw-bold" %>
+                </span>
+                <%= form.date_field :payment_date, class: "form-control fs-5 fw-bold" %>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="d-grid">
+                <%= form.submit class: "btn btn-success shadow fs-5 fw-bold" %>
+              </div>
+            </div>
+          </div>
+        <% else %>
+          <div class="card">
+            <div class="card-body bg-warning fs-3 fw-bold text-white">
+              <i class="fa-solid fa-triangle-exclamation"></i>
+              &emsp;
+              Chiusura gi&agrave; contrasegnata come pagata.
+              <br/>
+              Se vuoi annullare il pagamento contatta il CESI.
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <div class="card">
+          <div class="card-body bg-warning fs-4 text-white">
+            <i class="fa-solid fa-triangle-exclamation fs-4"></i>
+            &nbsp;
+            Non puoi pi&ugrave; modificare la Chiusura Rimborsi!
+            <br/>
+            Una e-mail di conferma &egrave; gia stata spedita all'Ufficio Amministrazione.
+            <hr class="text-white"/>
+            Se vuoi annullarla contatta l'Uffico Amministrazione di riferimento o il CESI.
+          </card>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<% end %>
+</div>
+</div>

@@ -16,7 +16,7 @@
             </div>
             <h2>
               <br/>
-              <%= wicked_pdf_image_tag(reimbursement.user.institute_logo.url, :crop => :fill) %>
+              <%= wicked_pdf_image_tag(reimbursement.user.institute_logo.url, :crop => :fill) if reimbursement.user.institute_logo.url.present? %>
               <strong>
                 &nbsp;&nbsp;&nbsp;<%= reimbursement.user.institute %>
               </strong>

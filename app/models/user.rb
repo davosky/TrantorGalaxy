@@ -24,6 +24,11 @@ class User < ApplicationRecord
     self.id = last_id.to_i + 1
   end
 
+  scope :same_region_and_province_as, ->(user) {
+          where(region: user.region, province: user.province)
+            .order(:last_name)
+        }
+
   validates :first_name, :last_name, :gender, :category, :region, :province, :institute, :office, :validator, :validator_presentation, :confirmator, :confirmator_presentation, presence: true
 
   validates_integrity_of :signature, :validator_signature, :confirmator_signature
@@ -31,6 +36,11 @@ class User < ApplicationRecord
 
   def user_name_full
     "#{self.last_name} #{self.first_name}".html_safe
+  end
+
+  def user_name_full_truncate
+    first_initial = "#{self.first_name&.[](0)}" if self.first_name.present?
+    "#{self.last_name} #{first_initial}".strip.html_safe
   end
 
   private

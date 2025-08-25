@@ -17,50 +17,120 @@
       <% end %>
     </span>
   </div>
-  <div class="card-body">
-    <%# notice %>
-    <div id="reimbursement_closures">
-      <table class="table table-hover">
-        <thead>
-          <th class="fs-5 fw-bold text-primary text-center">
-            <i class="fa-solid fa-arrow-up-9-1 fs-5 fw-bold text-primary"></i>
-            &nbsp;
-            Numero
-          </th>
-          <th class="fs-5 fw-bold text-primary text-center">
-            <i class="fa-solid fa-calendar-days fs-5 fw-bold text-primary"></i>
-            &nbsp;
-            Anno
-          </th>
-          <th class="fs-5 fw-bold text-primary text-center">
-            <i class="fa-solid fa-calendar-week fs-5 fw-bold text-primary"></i>
-            &nbsp;
-            Mese
-          </th>
-          <th class="fs-5 fw-bold text-primary text-center">
-            <i class="fa-solid fa-calendar-week fs-5 fw-bold text-primary"></i>
-            &nbsp;
-            Periodo
-          </th>
-          <th class="fs-5 fw-bold text-primary text-center">
-            <i class="fa-solid fa-money-bill fs-5 fw-bold text-primary"></i>
-            &nbsp;
-            Pagamento
-          </th>
-          <th class="fs-5 fw-bold text-primary text-center">
-            <i class="fa-solid fa-calendar-day fs-5 fw-bold text-primary"></i>
-            &nbsp;
-            Data Pagamento
-          </th>
-          <th colspan=2></th>
+  <% unless !current_user.admin? && !current_user.payroll? %>
+    <!-- Search Form -->
+    <%= search_form_for @q, id: "search-form", url: reimbursement_closures_path do |form| %>
+      <div class="row m-2">
+        <div class="col-4">
+          <div class="input-group mb-2">
+            <div class="input-group-text bg-primary text-white">
+              <i class="fa-solid fa-calendar-days"></i>
+              &nbsp;<span>Anno</span>
+            </div>
+            <%= form.text_field :year_cont, class: "form-control" %>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="input-group mb-2">
+            <div class="input-group-text bg-primary text-white">
+              <i class="fa-solid fa-calendar-week"></i>
+              &nbsp;<span>Mese</span>
+            </div>
+            <%= form.text_field :month_cont, class: "form-control" %>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="input-group mb-2">
+            <div class="input-group-text bg-primary text-white">
+              <i class="fa-solid fa-calendar-week"></i>
+              &nbsp;<span>Periodo</span>
+            </div>
+            <%= form.text_field :period_cont, class: "form-control" %>
+          </div>
+        </div>
+      </div>
+      <div class="row m-2">
+        <div class="col-7">
+          <div class="input-group mb-2">
+            <div class="input-group-text input-group-text-fixed bg-primary text-white">
+              <i class="fa-solid fa-calendar-day"></i>
+              &nbsp;<span>Utente</span>
+            </div>
+            <%= form.select :user_id_eq, 
+      options_from_collection_for_select(
+        User.same_region_and_province_as(current_user), 
+        :id, 
+        :user_name_full, 
+        @q.user_id_eq
+      ),
+      { include_blank: true },
+      class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-5">
+          <div class="d-grid mb-2">
+            <%= button_tag(type: "submit", class: "btn btn-primary") do %>
+              <i class="fa-solid fa-magnifying-glass"></i>
+              &emsp;
+              <strong>
+                Cerca
+              </strong>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+  <hr/>
+  <div id="reimbursement_closures">
+    <table class="table table-hover">
+      <thead>
+        <th class="fs-5 fw-bold text-primary text-center">
+          <i class="fa-solid fa-arrow-up-9-1 fs-5 fw-bold text-primary"></i>
+          &nbsp;
+          Numero
         </th>
-      </thead>
-      <tbody>
-        <% @reimbursement_closures.each do |reimbursement_closure| %>
-          <%= render reimbursement_closure %>
+        <th class="fs-5 fw-bold text-primary text-center">
+          <i class="fa-solid fa-calendar-days fs-5 fw-bold text-primary"></i>
+          &nbsp;
+          Anno
+        </th>
+        <th class="fs-5 fw-bold text-primary text-center">
+          <i class="fa-solid fa-calendar-week fs-5 fw-bold text-primary"></i>
+          &nbsp;
+          Mese
+        </th>
+        <th class="fs-5 fw-bold text-primary text-center">
+          <i class="fa-solid fa-calendar-week fs-5 fw-bold text-primary"></i>
+          &nbsp;
+          Periodo
+        </th>
+        <th class="fs-5 fw-bold text-primary text-center">
+          <i class="fa-solid fa-money-bill fs-5 fw-bold text-primary"></i>
+          &nbsp;
+          Pagamento
+        </th>
+        <th class="fs-5 fw-bold text-primary text-center">
+          <i class="fa-solid fa-calendar-day fs-5 fw-bold text-primary"></i>
+          &nbsp;
+          Data Pagamento
+        </th>
+        <% unless !current_user.admin? && !current_user.payroll? %>
+          <th class="fs-5 fw-bold text-primary">
+            <i class="fa-solid fa-user fs-5 fw-bold text-primary"></i>
+            &nbsp;
+            Utente
+          </th>
         <% end %>
-      </tbody>
-    </table>
-  </div>
+        <th colspan=2></th>
+      </th>
+    </thead>
+    <tbody>
+      <% @reimbursement_closures.each do |reimbursement_closure| %>
+        <%= render reimbursement_closure %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 </div>
 </div>

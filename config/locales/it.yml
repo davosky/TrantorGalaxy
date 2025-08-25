@@ -76,6 +76,7 @@ it:
         position: Posizione
         created_at: Creato il
         updated_at: Aggiornato il
+        identifier: Identificatore
         user: Utente
         user_id: Utente
       road:

@@ -1,0 +1,66 @@
+<div class="card">
+  <div class="card-header bg-light">
+    <span class="float-start fs-3 fw-bold text-primary">
+      <%= image_tag("reimbursement_closure/reimbursement_closures-logo.svg", class: "img-fluid", alt: "reimbursement_closures-logo.svg") %>
+      &emsp;
+      Chiusure Rimborsi
+    </span>
+    <span class="float-end fs-4 fw-bold">
+      <%= link_to new_reimbursement_closure_path, class: "btn btn-sm btn-success shadow  fs-5 fw-bold", data: { turbo: true, turbo_frame: 'modal' }, title: "Crea un Nuovo Record" do %>
+        <span class="fs-6 fw-bold">
+          <i class="fa-solid fa-plus"></i>
+          &nbsp;
+          <i class="fa-solid fa-unlock-keyhole"></i>
+          &nbsp;
+          Nuova Chiusura Rimborsi
+        </span>
+      <% end %>
+    </span>
+  </div>
+  <div class="card-body">
+    <%# notice %>
+    <div id="reimbursement_closures">
+      <table class="table table-hover">
+        <thead>
+          <th class="fs-5 fw-bold text-primary text-center">
+            <i class="fa-solid fa-arrow-up-9-1 fs-5 fw-bold text-primary"></i>
+            &nbsp;
+            Numero
+          </th>
+          <th class="fs-5 fw-bold text-primary text-center">
+            <i class="fa-solid fa-calendar-days fs-5 fw-bold text-primary"></i>
+            &nbsp;
+            Anno
+          </th>
+          <th class="fs-5 fw-bold text-primary text-center">
+            <i class="fa-solid fa-calendar-week fs-5 fw-bold text-primary"></i>
+            &nbsp;
+            Mese
+          </th>
+          <th class="fs-5 fw-bold text-primary text-center">
+            <i class="fa-solid fa-calendar-week fs-5 fw-bold text-primary"></i>
+            &nbsp;
+            Periodo
+          </th>
+          <th class="fs-5 fw-bold text-primary text-center">
+            <i class="fa-solid fa-money-bill fs-5 fw-bold text-primary"></i>
+            &nbsp;
+            Pagamento
+          </th>
+          <th class="fs-5 fw-bold text-primary text-center">
+            <i class="fa-solid fa-calendar-day fs-5 fw-bold text-primary"></i>
+            &nbsp;
+            Data Pagamento
+          </th>
+          <th colspan=2></th>
+        </th>
+      </thead>
+      <tbody>
+        <% @reimbursement_closures.each do |reimbursement_closure| %>
+          <%= render reimbursement_closure %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>

@@ -9,7 +9,7 @@
       <div class="row">
         <div class="col">
           <span class="span-left">
-            <%= wicked_pdf_image_tag(@user.institute_logo.url, :crop => :fill) %>
+            <%= wicked_pdf_image_tag(@user.institute_logo.url, :crop => :fill) if @user.institute_logo.url.present? %>
           </span>
           <span class="span-right">
             <%= inline_svg('pdf/reimbursements-logo-riepilogo.svg', preserve_aspect_ratio: 'xMaxYMax meet') %>

@@ -1,8 +1,24 @@
 class ReimbursementClosuresController < ApplicationController
+  load_and_authorize_resource
+
+  rescue_from CanCan::AccessDenied do |exception|
+    respond_to do |format|
+      format.html { redirect_to reimbursement_closures_url, alert: exception.message }
+      format.json { render json: { error: exception.message }, status: :forbidden }
+      format.js { render "access_denied", status: :forbidden }
+    end
+  end
+
   before_action :set_reimbursement_closure, only: %i[ show edit update destroy ]
 
   def index
-    @reimbursement_closures = ReimbursementClosure.where(user_id: current_user.id).order(created_at: "DESC").page(params[:page])
+    if current_user.admin == true || current_user.payroll == true
+      @q = ReimbursementClosure.ransack(params[:q])
+
+      @reimbursement_closures = @q.result(distinct: true).order(name: "DESC").where(user_id: User.where(province: current_user.province, region: current_user.region))
+    else
+      @reimbursement_closures = ReimbursementClosure.where(user_id: current_user.id).order(created_at: "DESC")
+    end
   end
 
   def show
